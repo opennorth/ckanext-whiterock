@@ -1,0 +1,42 @@
+{% extends "page.html" %}
+
+
+{% block primary_content %}
+  <article class="module">
+    <div class="module-content">
+      <h1 class="page-heading">Follow us<h1>
+
+      <h2>On Twitter</h2>
+      <p>Follow us:<b> <a href="https://twitter.com/whiterockcity">@whiterockcity</a></b></p>
+
+      <h2>By email</h2>
+      <p>By creating an account on our open data portal, you can receive some notification when new data is available. You can do this in three simple steps:</p>
+      <ol>
+        <li>Create an {% link_for _('account'), controller='user', action='register', class_='sub' %}.</li>
+        <li>Enable notification in your   
+{% if c.userobj %}
+<a href="{{ h.url_for(controller='user', action='edit', id=c.userobj.name) }}">configuration settings</a>.
+{% else %}
+configuration settings.
+{% endif %}
+        </li>
+        <li>For each item that interest you (dataset, category or tag) click on the button "Follow".</li>
+      </ol>
+
+    </div>
+  </article>
+{% endblock %}
+
+{% block secondary_content %}
+<div class="module module-narrow module-shallow">
+  <h2 class="module-heading">
+    <i class="icon-info-sign"></i>
+    {{ _('Follow us') }}
+  </h2>
+  <div class="module-content">
+    <p>
+      Track new datasets 
+    </p>
+  </div>
+</div>
+{% endblock %}

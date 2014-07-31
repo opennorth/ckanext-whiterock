@@ -1,0 +1,25 @@
+{% ckan_extends %}
+
+{% block header_account_container_content %}
+{{ super() }}
+
+          <nav class="account not-authed">
+            <ul class="unstyled">
+              <li class="rss-icon fa-icon"><a href="{{ h.url('/', locale='default', qualified=true) }}feeds/dataset.atom"> </a></li>
+              <li class="mail-icon fa-icon">{% link_for _(' '), controller='ckanext.whiterock.controller:ContactController', action='contact_form' %}</li>
+              <li class="twitter-icon fa-icon">{% link_for _(' '), controller='ckanext.whiterock.controller:FollowController', action='follow' %}</li>
+            </ul>
+          </nav>
+
+{% endblock %}
+
+
+{% block header_site_navigation_tabs %}
+  {{ h.build_nav_main(
+    ('search', _('Data')),
+    ('group_index', _('Categories')),
+    ('organizations_index', _('Organizations')),
+    ('related_dashboard', _('Apps')),
+    ('suggest', _('Suggest')),    
+  )}}
+{% endblock %}

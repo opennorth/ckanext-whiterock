@@ -1,0 +1,8 @@
+{% ckan_extends %}
+
+        {% block heading_title %}
+          {{ super() }}
+          {% if package.groups %}
+            <div class="group_preview"><a href="{{ h.url_for(controller='group', action='read', id=package.groups[0].name) }}"><img src="{{package.groups[0].image_display_url}}" alt="Icon"/> {{package.groups[0].display_name}}</a></div>
+          {% endif %}
+        {% endblock %}

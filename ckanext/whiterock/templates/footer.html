@@ -1,0 +1,38 @@
+{% ckan_extends %}
+
+    {% block footer_content %}
+      <div class="footer-col1">
+        <div class="footer-logo">
+          <img src="/images/coats-arms-wr.png" alt="Coats of arms - City of White Rock"/>
+        </div>
+        <div class="footer-site-search">
+          <form class="section site-search simple-input" action="{% url_for controller='package', action='search' %}" method="get">
+            <div class="field">
+              <label for="field-sitewide-search">{% block header_site_search_label %}{{ _('Search Datasets') }}{% endblock %}</label>
+              <input id="field-sitewide-search" type="text" name="q" placeholder="{{ _('Search') }}" />
+              <button class="btn-search" type="submit"><i class="icon-search"></i></button>
+            </div>
+          </form>
+        </div>
+      </div>
+      <nav class="footer-links">
+          <ul class="unstyled">
+              <li><a href="{{ h.url_for(controller='home', action='about') }}">{{ _('About this portal') }}</a></li>
+              <li><a href="/pages/faq">Frequently asked questions</a></li>
+              <li><a href="/api/3">Access the catalog API</a> (<a href="{{ api_url }}">Documentation</a>)</li>
+          </ul>
+          <ul class="unstyled">
+              <li class="mail-icon fa-icon">{% link_for _(' Contact Us'), controller='ckanext.whiterock.controller:ContactController', action='contact_form' %}</li>
+              <li class="twitter-icon fa-icon">{% link_for _(' Follow Us'), controller='ckanext.whiterock.controller:FollowController', action='follow' %}</li>
+              <li><a href="{{ h.url_for(controller='ckanext.whiterock.controller:SuggestController', action='suggest_form') }}">Suggest a dataset</a></li>
+          </ul>
+      </nav>
+      <div class="attribution">
+          <p>{% trans %}<strong>Powered by</strong> <a href="http://ckan.org">CKAN</a>{% endtrans %}</p>
+          <ul class="unstyled">
+                          {% set api_url = 'http://docs.ckan.org/en/{0}/api.html'.format(g.ckan_doc_version) %}
+          </ul>
+
+      </div>
+    {% endblock %}
+

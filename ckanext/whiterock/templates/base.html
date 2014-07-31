@@ -1,0 +1,11 @@
+{% ckan_extends %}
+
+{% block styles %}
+  {{ super() }}
+  {% resource 'ckanext-whiterock/css/custom.css' %}
+  {% resource 'ckanext-whiterock/js/preload.js' %}
+  {% resource 'ckanext-whiterock/js/wordcloud.js' %}
+  <link href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+  <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Lato">
+  <link type="application/atom+xml" rel="alternate" href="{{ h.url('/', locale='default', qualified=true) }}feeds/dataset.atom"/>
+{% endblock %}

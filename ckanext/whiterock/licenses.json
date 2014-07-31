@@ -1,0 +1,28 @@
+[
+    {
+        "domain_content": false,
+        "domain_data": true,
+        "domain_software": false,
+        "family": "",
+        "id": "OGL-BC",
+        "is_okd_compliant": true,
+        "is_osi_compliant": false,
+        "maintainer": "Government of British Columbia",
+        "status": "active",
+        "title": "Open Government License – British Columbia",
+        "url": "http://www.data.gov.bc.ca/local/dbc/docs/license/OGL-vbc2.0.pdf"
+    },
+    {
+        "domain_content": false,
+        "domain_data": true,
+        "domain_software": false,
+        "family": "",
+        "id": "SCOL",
+        "is_okd_compliant": true,
+        "is_osi_compliant": false,
+        "maintainer": "Statistics Canada",
+        "status": "active",
+        "title": "Statistics Canada Open Licence",
+        "url": "http://www.statcan.gc.ca/eng/reference/licence-eng"
+    }
+]

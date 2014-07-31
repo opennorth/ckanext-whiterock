@@ -1,9 +1,74 @@
 import ckan.plugins as plugins
 import ckan.plugins.toolkit as tk
+import ckan.exceptions
 
 def update_frequency():
-    frequency_list = (u"Yearly", u"Monthly", u"Weekly", u"Daily", u"Realtime", u"Punctual", u"Variable", u"Never")
+    frequency_list = (u"Variable", u"Yearly", u"Monthly", u"Weekly", u"Daily", u"Realtime", u"Punctual", u"Never")
     return frequency_list
+
+def get_group_list():
+
+    groups = tk.get_action('group_list')(
+        data_dict={'all_fields': True})
+
+    return groups
+
+def get_organization(org=None):
+    if org is None:
+        return {}
+    try:
+        return tk.get_action('organization_show')({}, {'id': org})
+    except :
+        return {}
+
+
+class WhiteRockFacetPlugin(plugins.SingletonPlugin):
+
+    plugins.implements(plugins.IFacets, inherit=True)
+
+    def dataset_facets(self, facets_dict, package_type):
+
+        default_facet_titles = {
+                    'license_id': tk._('License'),
+                    'res_format': tk._('Formats'),
+                    'groups': tk._('Categories'),
+                    'tags': tk._('Tags')
+                    }
+        return default_facet_titles
+
+    def group_facets(self, facets_dict, group_type, package_type):
+
+        default_facet_titles = {
+                    'license_id': tk._('License'),
+                    'res_format': tk._('Formats'),
+                    'groups': tk._('Categories'),
+                    'tags': tk._('Tags')
+                    }
+        return default_facet_titles
+
+class WhiteRockExtraPagesPlugin(plugins.SingletonPlugin):
+
+    plugins.implements(plugins.IRoutes, inherit=True)
+    plugins.implements(plugins.IConfigurer, inherit=True)
+
+    def update_config(self, config):
+        config['ckan.resource_proxy_enabled'] = True
+
+    def before_map(self, m):
+        m.connect('suggest' ,'/suggest',
+                    controller='ckanext.whiterock.controller:SuggestController',
+                    action='suggest_form')
+
+        m.connect('contact', '/contact',
+                    controller='ckanext.whiterock.controller:ContactController',
+                    action='contact_form')
+
+
+        m.connect('follow', '/follow',
+                    controller='ckanext.whiterock.controller:FollowController',
+                    action='follow')
+
+        return m
 
 class WhiteRockCommonPlugin(plugins.SingletonPlugin, tk.DefaultDatasetForm):
     '''An example that shows how to use the ITemplateHelpers plugin interface.
@@ -30,13 +95,13 @@ class WhiteRockCommonPlugin(plugins.SingletonPlugin, tk.DefaultDatasetForm):
         # ckanext/example_itemplatehelpers/templates.
         plugins.toolkit.add_template_directory(config, 'templates')
         plugins.toolkit.add_public_directory(config, 'public')
-        plugins.toolkit.add_resource('fanstatic', 'ckanext-whiterock')
+        plugins.toolkit.add_resource('fantastic', 'ckanext-whiterock')
 
 
     # Tell CKAN what custom template helper functions this plugin provides,
     # see the ITemplateHelpers plugin interface.
     def get_helpers(self):
-        return {'update_frequency': update_frequency}
+        return {'update_frequency': update_frequency, 'get_group_list': get_group_list, 'get_organization': get_organization}
 
 
     def is_fallback(self):

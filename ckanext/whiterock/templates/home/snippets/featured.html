@@ -1,0 +1,18 @@
+{%
+set output =  h.get_action('package_search', {'q': 'tags:Featured', 'rows': 3, 'sort': 'metadata_modified desc'}) 
+%}
+
+       <div class="box">
+          <section class="group-list module module-narrow module-shallow">
+            <header class="module-heading media">
+              <div class="media-content">
+                <h3 class="media-heading">Featured</h3>
+                <p>Valuable datasets featured</p>
+              </div>
+            </header>
+       {% set list_class = "unstyled dataset-list" %}
+      {% set item_class = "dataset-item module-content" %}
+      {% snippet 'snippets/package_list.html', packages=output.results, list_class=list_class, item_class=item_class, truncate=120 %}     
+         </section>
+
+        </div>
