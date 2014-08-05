@@ -11,10 +11,10 @@ setup(
     ''',
     classifiers=[], # Get strings from http://pypi.python.org/pypi?%3Aaction=list_classifiers
     keywords='',
-    author='St\xc3\xa9phane Guidoin',
+    author='Stephane Guidoin',
     author_email='stephane@opennorth.ca',
-    url='',
-    license='MIT',
+    url='https://github.com/opennorth/ckanext-whiterock',
+    license='AGPL',
     packages=find_packages(exclude=['ez_setup', 'examples', 'tests']),
     namespace_packages=['ckanext', 'ckanext.whiterock'],
     include_package_data=True,
@@ -26,5 +26,8 @@ setup(
         [ckan.plugins]
         # Add plugins here, e.g.
         # myplugin=ckanext.whiterock.plugin:PluginClass
+        wrcommon=ckanext.whiterock.plugin:WhiteRockCommonPlugin
+        wrpages=ckanext.whiterock.plugin:WhiteRockExtraPagesPlugin
+        wrfacet=ckanext.whiterock.plugin:WhiteRockFacetPlugin
     ''',
 )
