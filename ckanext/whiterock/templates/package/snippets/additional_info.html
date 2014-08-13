@@ -13,7 +13,7 @@
       {% if pkg_dict.metadata_created %}
         <tr>
           <th scope="row" class="dataset-label">{{ _('Creation Date') }}</th>
-          <td class="dataset-details" property="dc:issued">{{ h.format_date(pkg_dict.metadata_created) }}</td>
+          <td class="dataset-details" property="dc:issued">{{ h.render_datetime(pkg_dict.metadata_created,'%c') }}</td>
         </tr>
       {% endif %}
 

@@ -22,8 +22,14 @@
               <li><a href="/api/3">Access the catalog API</a> (<a href="{{ api_url }}">Documentation</a>)</li>
           </ul>
           <ul class="unstyled">
-              <li class="mail-icon fa-icon">{% link_for _(' Contact Us'), controller='ckanext.whiterock.controller:ContactController', action='contact_form' %}</li>
-              <li class="twitter-icon fa-icon">{% link_for _(' Follow Us'), controller='ckanext.whiterock.controller:FollowController', action='follow' %}</li>
+              <li>
+                <span class="mail-icon fa-icon">{% link_for _(' '), controller='ckanext.whiterock.controller:ContactController', action='contact_form' %}</span>
+                {% link_for _('Contact Us'), controller='ckanext.whiterock.controller:ContactController', action='contact_form' %}
+              </li>
+              <li>
+                <span class="twitter-icon fa-icon">{% link_for _(' '), controller='ckanext.whiterock.controller:FollowController', action='follow' %}</span>
+                {% link_for _('Follow Us'), controller='ckanext.whiterock.controller:FollowController', action='follow' %}
+              </li>
               <li><a href="{{ h.url_for(controller='ckanext.whiterock.controller:SuggestController', action='suggest_form') }}">Suggest a dataset</a></li>
           </ul>
       </nav>
