@@ -141,7 +141,7 @@ a:hover {
 }
 .flash-messages .alert {
   width: 750px;
-  margin: 20px auto;
+  margin: 0px 75px;
 }
 a.tag:hover,
 a.tag:active {
@@ -336,6 +336,9 @@ a.tag:active {
 .homepage .container {
   margin: 0px;
   width: 100%;
+}
+.homepage .flash-messages .alert {
+  margin: 20px auto;
 }
 .homepage .intro-text {
   padding: 35px 50px;

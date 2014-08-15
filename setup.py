@@ -1,7 +1,7 @@
 from setuptools import setup, find_packages
 import sys, os
 
-version = '0.1'
+version = '1.0'
 
 setup(
     name='ckanext-whiterock',
@@ -11,7 +11,7 @@ setup(
     ''',
     classifiers=[], # Get strings from http://pypi.python.org/pypi?%3Aaction=list_classifiers
     keywords='',
-    author='Stephane Guidoin',
+    author='Stephane Guidoin / Open North Inc.',
     author_email='stephane@opennorth.ca',
     url='https://github.com/opennorth/ckanext-whiterock',
     license='AGPL',

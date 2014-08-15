@@ -102,7 +102,7 @@ class SuggestController(base.BaseController):
             body = 'Submitted by %s (%s)\n' % (data_dict["name"], data_dict["email"])
 
             if (data_dict["category"] != ''):
-                body += 'Category: %s' % data_dict["category"]
+                body += 'Category: %s\n' % data_dict["category"]
 
             body += 'Request: %s' % data_dict["suggestion"]
 
