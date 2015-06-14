@@ -18,6 +18,8 @@
     </div>
   </div>
 
+{{ form.input('via_map', label=_('External visualization URL'), id='field-via_map', placeholder=_('http://...'), value=data.via_map, error=errors.via_map, classes=['control-medium']) }}
+
  {{ super() }}
 
 {% endblock %}
